@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <div class="container">
+            Blog ISA
+        </div>
+    </div>
+    <div class="container">
+        <div class="alert alert-info text-center" role="alert">
+            This is simple blog system
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <h3><span class="glyphicon glyphicon-info-sign"></span> Recent posts</h3>
+                <ul>
+                    {% for item in recent %}
+                        <li>{{ item }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3><span class="glyphicon glyphicon-link"></span> Top Stories!</h3>
+                <ul>
+                    {% for item in trending %}
+                        <li>{{ item }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div> <!-- row -->
+        <div class="alert alert-info text-center" role="alert">
+            This app is purely experimental and only for exercise purposes!
+        </div>
+    </div>
+
+{% endblock %}
