@@ -1,15 +1,34 @@
 <?php
+use ISA\Workshop\BlogController;
+
 require('../vendor/autoload.php');
+
+$dbConfiguration = [
+    'db.options' => [
+        'driver'    => 'pdo_mysql',
+        'host'      => '127.0.0.1',
+        'dbname'    => 'isa_blog',
+        'user'      => 'root',
+        'password'  => 'infoShareAcademy',
+        'charset'   => 'utf8',
+    ],
+];
 
 $app = new Silex\Application();
 $app['debug'] = true;
 
-$app->register(new Silex\Provider\TwigServiceProvider(), [
-    'twig.path' => __DIR__.'/views',
-]);
+$app->register(new Silex\Provider\TwigServiceProvider(), ['twig.path' => __DIR__.'/views']);
+$app->register(new Silex\Provider\DoctrineServiceProvider(), $dbConfiguration);
+$app->register(new Silex\Provider\ServiceControllerServiceProvider());
+
+$app['blog.controller'] = function() use ($app) {
+    return new BlogController($app['db'], $app['twig']);
+};
 
 // routing
-$app->get('/', '\\ISA\\Workshop\\BlogController::showHomePage');
+$app->get('/', 'blog.controller:showHomePage');
+$app->get('/posts', 'blog.controller:showPostsCollection');
+$app->get('/posts/{postId}', 'blog.controller:showSinglePost');
 
 // run app
 $app->run();
