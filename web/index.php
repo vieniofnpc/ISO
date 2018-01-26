@@ -22,7 +22,8 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), $dbConfiguration);
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 
 $app['blog.controller'] = function() use ($app) {
-    return new BlogController($app['db'], $app['twig']);
+    $blogRepository = new \ISA\Workshop\BlogRepository($app['db']);
+    return new BlogController($blogRepository, $app['twig']);
 };
 
 // routing
