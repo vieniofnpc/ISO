@@ -58,4 +58,12 @@ class BlogRepository
         return $result === false ? [] : $result;
     }
 
+
+    /**
+     * @param int $postId
+     */
+    public function updateVisitForPost(int $postId) {
+        $this->db->executeQuery('UPDATE posts visited = visited + 1 WHERE id = :postId', ['postId' => $postId]);
+    }
+
 }
