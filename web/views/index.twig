@@ -12,7 +12,7 @@
                 <h3><span class="glyphicon glyphicon-info-sign"></span> Recent posts</h3>
                 <ul>
                     {% for item in recent %}
-                        <li>{{ item.title }} </li>
+                        <li><a href="/posts/{{item.id}}">{{ item.title}}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -20,7 +20,7 @@
                 <h3><span class="glyphicon glyphicon-link"></span> Top Stories!</h3>
                 <ul>
                     {% for item in trending %}
-                        <li>{{ item.title }} </li>
+                        <li><a href="/posts/{{item.id}}">{{item.title}}</a></li>
                     {% endfor %}
                 </ul>
             </div>

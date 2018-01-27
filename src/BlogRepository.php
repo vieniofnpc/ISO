@@ -57,4 +57,5 @@ class BlogRepository
         $result =  $this->db->fetchAssoc('SELECT * FROM posts WHERE id = :postId', ['postId' => $postId]);
         return $result === false ? [] : $result;
     }
+
 }

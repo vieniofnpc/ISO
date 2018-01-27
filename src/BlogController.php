@@ -54,4 +54,12 @@ class BlogController
     {
         return $this->twig->render('single-post.twig', $this->blogRepository->loadPostById($postId));
     }
+
+    /**
+     * @return string
+     */
+    public function  showAbout()
+    {
+        return $this->twig->render('about.twig', ['posts' => $this->blogRepository->loadAbout()]);
+    }
 }
