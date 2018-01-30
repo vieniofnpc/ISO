@@ -63,7 +63,8 @@ class BlogRepository
      * @param int $postId
      */
     public function updateVisitForPost(int $postId) {
-        $this->db->executeQuery('UPDATE posts visited = visited + 1 WHERE id = :postId', ['postId' => $postId]);
+        $this->db->executeQuery('UPDATE posts SET visited = visited + 1 WHERE id = :postId', ['postId' => $postId]);
     }
+
 
 }

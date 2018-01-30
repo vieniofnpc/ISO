@@ -30,7 +30,8 @@ $app['blog.controller'] = function() use ($app) {
 $app->get('/', 'blog.controller:showHomePage');
 $app->get('/posts', 'blog.controller:showPostsCollection');
 $app->get('/posts/{postId}', 'blog.controller:showSinglePost');
-$app->get('/about.html','blog.controller:showAbout');
+$app->get('/about','blog.controller:showAbout');
+$app->get('/gallery','blog.controller:showGallery');
 
 // run app
 $app->run();

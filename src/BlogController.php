@@ -52,14 +52,28 @@ class BlogController
      */
     public function showSinglePost(string $postId) : string
     {
-        return $this->twig->render('single-post.twig', $this->blogRepository->loadPostById($postId));
+        return $this->twig->render('single-post.twig', $this->blogRepository->loadPostById($postId), $this->blogRepository->updateVisitForPost($postId));
     }
 
     /**
-     * @return string
+     * return About page
      */
-    public function  showAbout()
+
+    public function showAbout ()
     {
-        return $this->twig->render('about.twig', ['posts' => $this->blogRepository->loadAbout()]);
+        return $this->twig->render('about.twig');
     }
+
+    /**
+     * return Gallery page
+     */
+
+    public function  showGallery ()
+    {
+        return $this->twig->render('gallery.twig');
+    }
+
+
+
+
 }

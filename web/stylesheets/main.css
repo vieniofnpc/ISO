@@ -1,5 +1,8 @@
 .jumbotron {
   background: #532F8C;
+  /*background-image: url(../images/624697496.jpg);*/
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
   color: white;
   padding-bottom: 80px;
 }
