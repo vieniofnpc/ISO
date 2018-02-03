@@ -34,8 +34,9 @@ class BlogController
     {
         $recent = $this->blogRepository->loadCollectionOfRecentPosts();
         $popular = $this->blogRepository->loadCollectionOfPopularPosts();
+        $popularAuthors = $this->blogRepository->loadCollectionOfAuthorWhoCreateMostPosts();
 
-        return $this->twig->render('index.twig', ['recent' => $recent, 'trending' => $popular]);
+        return $this->twig->render('index.twig', ['recent' => $recent, 'trending' => $popular, 'popularAuthors' => $popularAuthors]);
     }
 
     /**
@@ -44,6 +45,16 @@ class BlogController
     public function showPostsCollection()
     {
         return $this->twig->render('post-collection.twig', ['posts' => $this->blogRepository->loadPostCollection()]);
+    }
+
+    /**
+     * @param string $authorName
+     * return string
+     */
+
+    public function showPostsByAuthor ($authorName)
+    {
+        return $this->twig->render('author-posts.twig',['authorPosts' => $this->blogRepository->loadPostByAuthor($authorName)]);
     }
 
     /**
@@ -72,8 +83,6 @@ class BlogController
     {
         return $this->twig->render('gallery.twig');
     }
-
-
 
 
 }

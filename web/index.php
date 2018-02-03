@@ -32,6 +32,7 @@ $app->get('/posts', 'blog.controller:showPostsCollection');
 $app->get('/posts/{postId}', 'blog.controller:showSinglePost');
 $app->get('/about','blog.controller:showAbout');
 $app->get('/gallery','blog.controller:showGallery');
+$app->get('/authorPosts/{authorName}','blog.controller:ShowPostsByAuthor');
 
 // run app
 $app->run();

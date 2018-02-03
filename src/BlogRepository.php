@@ -66,5 +66,20 @@ class BlogRepository
         $this->db->executeQuery('UPDATE posts SET visited = visited + 1 WHERE id = :postId', ['postId' => $postId]);
     }
 
+    /**
+     * @return array
+     */
+    public function loadCollectionOfAuthorWhoCreateMostPosts ()
+    {
+        return $this->db->fetchAll( 'SELECT distinct author,count(*) as count FROM posts GROUP BY author DESC;');
+    }
 
+    /**
+     * @param $AuthorName
+     */
+    public function loadPostByAuthor ($authorName)
+    {
+        $result = $this->db->fetchAll('SELECT * FROM posts WHERE author = :authorName', ['authorName' => $authorName]);
+        return $result;
+    }
 }
